@@ -1,6 +1,7 @@
 ﻿using DataEntity.Data;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -68,7 +69,8 @@ namespace WCFPrueba
 
         public Catalogo[] getAllModalidades(){
             var a = new DataEntity.Data.PRUEBA();
-            var c = a.Catalogos.Where(l => l.Id_Grupo == 1).ToList().ConvertAll<Catalogo>((g)=> {
+            var settingModalidad = Convert.ToInt32(ConfigurationManager.AppSettings["IdGrupoModalidades"]);
+            var c = a.Catalogos.Where(l => l.Id_Grupo == settingModalidad).ToList().ConvertAll<Catalogo>((g)=> {
                 var o = new Catalogo();
                 DataUtils.CopyObjectData(g, o);
                 return o;
@@ -78,7 +80,8 @@ namespace WCFPrueba
 
         public Catalogo[] getAllPaises(){
             var a = new DataEntity.Data.PRUEBA();
-            var c = a.Catalogos.Where(l => l.Id_Grupo == 2).ToList().ConvertAll<Catalogo>((g) => {
+            var settingPaises = Convert.ToInt32(ConfigurationManager.AppSettings["IdGrupoPaises"]);
+            var c = a.Catalogos.Where(l => l.Id_Grupo == settingPaises).ToList().ConvertAll<Catalogo>((g) => {
                 var o = new Catalogo();
                 DataUtils.CopyObjectData(g, o);
                 return o;
