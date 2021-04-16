@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WCFCursos" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:51468/Servicios/WCFCursos.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:51468/Servicios/WCFCursos.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51468/Servicios/WCFCursos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFPrueba" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWCFCursos_getList_InputMessage">
+    <wsdl:part name="parameters" element="tns:getList" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getId_InputMessage">
+    <wsdl:part name="parameters" element="tns:getId" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_Set_InputMessage">
+    <wsdl:part name="parameters" element="tns:Set" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_Set_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_Delete_InputMessage">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_Delete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllModalidades_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllModalidades" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllModalidades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllModalidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllPaises_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllPaises" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllPaises_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllPaisesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllCiudades_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAllCiudades" />
+  </wsdl:message>
+  <wsdl:message name="IWCFCursos_getAllCiudades_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAllCiudadesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWCFCursos">
+    <wsdl:operation name="getList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/getList" message="tns:IWCFCursos_getList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/getListResponse" message="tns:IWCFCursos_getList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/getId" message="tns:IWCFCursos_getId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/getIdResponse" message="tns:IWCFCursos_getId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Set">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/Set" message="tns:IWCFCursos_Set_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/SetResponse" message="tns:IWCFCursos_Set_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/Delete" message="tns:IWCFCursos_Delete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/DeleteResponse" message="tns:IWCFCursos_Delete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllModalidades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/getAllModalidades" message="tns:IWCFCursos_getAllModalidades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/getAllModalidadesResponse" message="tns:IWCFCursos_getAllModalidades_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPaises">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/getAllPaises" message="tns:IWCFCursos_getAllPaises_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/getAllPaisesResponse" message="tns:IWCFCursos_getAllPaises_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllCiudades">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWCFCursos/getAllCiudades" message="tns:IWCFCursos_getAllCiudades_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWCFCursos/getAllCiudadesResponse" message="tns:IWCFCursos_getAllCiudades_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWCFCursos" type="tns:IWCFCursos">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getList">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/getList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getId">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/getId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Set">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/Set" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllModalidades">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/getAllModalidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPaises">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/getAllPaises" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCiudades">
+      <soap:operation soapAction="http://tempuri.org/IWCFCursos/getAllCiudades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WCFCursos">
+    <wsdl:port name="BasicHttpBinding_IWCFCursos" binding="tns:BasicHttpBinding_IWCFCursos">
+      <soap:address location="http://localhost:51468/Servicios/WCFCursos.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

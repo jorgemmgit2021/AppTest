@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Item";
+}
+<script src="~/Scripts/angular.min.js"></script>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("InCtrl", function ($scope) { $scope.value = 2; $scope.incrementValue = function (increment) { $scope.value += increment; }; });
+</script>
+<div ng-app="myApp">
+    <div ng-controller="InCtrl"> <p ng-init="incrementValue(5)">{{value}}</p> </div>
+</div>
+
+@Html.ActionLink("Back", "Index")

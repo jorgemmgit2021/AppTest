@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WCFPrueba" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WCFPrueba" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfListCurso">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListCurso" nillable="true" type="tns:ListCurso" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListCurso" nillable="true" type="tns:ArrayOfListCurso" />
+  <xs:complexType name="ListCurso">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Costo" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_Curso" type="xs:int" />
+      <xs:element minOccurs="0" name="Modalidad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListCurso" nillable="true" type="tns:ListCurso" />
+  <xs:complexType name="Curso">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Costo" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_Ciudad" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Curso" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Modalidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Pais" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Curso" nillable="true" type="tns:Curso" />
+  <xs:complexType name="ArrayOfCatalogo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Catalogo" nillable="true" type="tns:Catalogo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCatalogo" nillable="true" type="tns:ArrayOfCatalogo" />
+  <xs:complexType name="Catalogo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id_Elemento" type="xs:int" />
+      <xs:element minOccurs="0" name="Id_Grupo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Catalogo" nillable="true" type="tns:Catalogo" />
+</xs:schema>

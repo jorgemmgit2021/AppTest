@@ -1,0 +1,166 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/js/Module.js"></script>
+<script src="~/Scripts/js/Controller.js"></script>
+<script src="~/Scripts/js/Service.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="../../Scripts/toaster.min.js"></script>
+<script src="../../Scripts/angular-animate.js"></script>
+<script>
+    /// <reference path="../../Scripts/js/Module.js" />
+    /// <reference path="../../Scripts/js/Service.js" />
+    /// <reference path="../../Scripts/js/Controller.js" />
+    /// <reference path="../../Scripts/angular.js" />
+    /// <reference path="../../Scripts/angular.min.js" />
+    /// <reference path="../../Scripts/toaster.min.js" />
+    /// <reference path="../../Scripts/angular-animate.js" />
+</script>
+<div ng-app="ModuloCursos">
+    <form name="cur" novalidate class="ng-pristine ng-valid">
+        <table id="tblContainer" data-ng-controller="CursosController">
+            <tr>
+                <td>
+                    <toaster-container toaster-options="{'close-button':false, 'time-out':{ 'toast-warning': 2000, 'toast-error': 0 } }"></toaster-container>
+                    <table style="border: solid 2px black; padding: 5px;">
+                        <tr style="height: 30px; background-color: black; color: whitesmoke;">
+                            <th></th>
+                            <th class="col-md-2">Consecutivo</th>
+                            <th class="col-md-2">Descripcion</th>
+                            <th class="col-md-2">Modalidad</th>
+                            <th class="col-md-2">Costo</th>
+                            <th class="col-md-2">Pais</th>
+                            <th class="col-md-2">Ciudad</th>
+                            <th class="col-md-2">Direccion</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tbody data-ng-repeat="cur in Cursos">
+                            <tr>
+                                <td></td>
+                                <td class="col-md-2"><span>{{cur.Id_Curso}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Descripcion}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Modalidad}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Costo}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Pais}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Ciudad}}</span></td>
+                                <td class="col-md-2"><span>{{cur.Direccion}}</span></td>
+                                <td>
+                                    <input type="button" id="Edit" value="Editar" data-ng-click="get(cur)" class="btn-group-sm btn-info" />
+                                </td>
+                                <td>
+                                    <input type="button" id="Delete" value="Eliminar" data-ng-click="delete(cur)" class="btn-group-sm btn-warning" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div style="color: black;">{{Message}}</div>
+                    <table style="border: solid 2px Black; padding: 2px;">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Consecutivo</span>
+                            </td>
+                            <td>
+                                <input type="text" id="Id_Curso" readonly="readonly" data-ng-model="Id" class="col-md-push-10 caption" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Descripcion</span>
+                            </td>
+                            <td>
+                                <input type="text" name="curDescripcion" data-ng-model="Descripcion" class="col-md-10" placeholder="Descripcion del curso" required />
+                                <div ng-show="cur.curDescripcion.$error.required">◄</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Modalidad</span>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    <select data-ng-model="Id_Modalidad" name="curModalidad"
+                                            data-ng-options="c.Id_Elemento as c.Descripcion for c in Modalidades" required>
+                                        <option value="">--Seleccione--</option>
+                                    </select>
+                                    <br />
+                                    <span ng-show="cur.curModalidad.$error.required">◄</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Costo</span>
+                            </td>
+                            <td>
+                                <input type="text" name="curCosto" data-ng-model="Costo" class="col-md-push-10 caption" min="0" max="5000000" placeholder="Costo del curso" required />
+                                <span ng-show="cur.curCosto.$error.required||cur.curCosto.$error.max||cur.curCosto.$error.min">◄</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Pais</span>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    <select data-ng-model="Id_Pais" 
+                                            name="curPais"
+                                            data-ng-options="c.Id_Elemento as c.Descripcion for c in Paises"
+                                            data-ng-change="ciudades(Id_Pais)" required>
+                                        <option value="">--Seleccione--</option>
+                                    </select>
+                                    <br />
+                                    <span ng-show="cur.curPais.$error.required">◄</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Ciudad</span>
+                            </td>
+                            <td>
+                                <div class="editor-field">
+                                    <select data-ng-model="Id_Ciudad" name="curCiudad"
+                                            data-ng-options="c.Id_Elemento as c.Descripcion for c in Ciudades" required>
+                                        <option value="">--Seleccione--</option>
+                                    </select>
+                                    <br />
+                                    <span ng-show="cur.curCiudad.$error.required">◄</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <span class="col-md-4">Direccion</span>
+                            </td>
+                            <td>
+                                <input type="text" name="curDireccion" data-ng-model="Direccion" class="col-md-push-10" placeholder="Dirección"  required />
+                                <span ng-show="cur.curDireccion.$error.required">◄</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="button" id="save" value="Guardar" data-ng-click="save()" class="btn-group-sm btn-success" ng-disabled=!cur.$valid />
+                                <input type="reset" class="btn-group-sm btn-primary" value="Nuevo" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
