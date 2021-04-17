@@ -16,7 +16,7 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
     paises();
     function GetAll() {
         var promiseGet = CursosService.getAll();
-        promiseGet.then(function (pl) { $scope.Cursos = pl.data },
+        promiseGet.then(function (pl) { $scope.$Cursos = pl.data },
             function (errorPl) {
                 $log.error('Some Error in Getting Records.', errorPl);
             });
@@ -30,6 +30,7 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
         $scope.Id_Pais = 0;
         $scope.Id_Ciudad = 0;
         $scope.Direccion = "";
+        $scope.OperType = 1;
     }
 
     $scope.save = function () {
@@ -53,7 +54,7 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
                 $scope.pop(2,`Error durante el proceso ${err}`);
             });
         } else {
-            Curso.Id = $scope.Id;
+            Curso.Id = $scope.Id_Curso;
             var promisePut = CursosService.put($scope.Id_Curso, Curso);
             promisePut.then(function (pl) {
                 $scope.Message = "Actualizacion completa";
@@ -78,6 +79,7 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
             $scope.Id_Ciudad = res.Id_Ciudad;
             $scope.Direccion = res.Direccion;
             $scope.ciudades(res.Id_Pais);
+            $scope.OperType = 2;
         },
             function (errorPl) {
                 $scope.pop(2, `Error durante el proceso ${errPl}`);
@@ -117,6 +119,10 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
             function (errorPl) {
                 $log.error('Some Error in Getting Records Paises.', errorPl);
             });        
+    }
+     $scope.reset = function(){
+        ClearModels();
+        document.forms[0].reset();
     }
     $scope.ciudades=function (id){
         var promiseGet = CursosService.getCiudades(id);

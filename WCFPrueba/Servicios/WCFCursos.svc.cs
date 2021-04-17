@@ -41,7 +41,7 @@ namespace WCFPrueba
                 Costo = n.Costo,
                 Pais = n.Catalogos1.Descripcion,
                 Ciudad = n.Catalogos2.Descripcion,
-                Direccion = n.Descripcion
+                Direccion = n.Direccion
             }).ToList().ConvertAll<ListCurso>((n)=> {
                 var o = new ListCurso(); // { Id_Curso = 0,Descripcion = "",Modalidad = "",Costo = 0, Pais = "",Ciudad = "",Direccion = "" };
                 DataUtils.CopyObjectData(n, o, "Catalogos,Catalogos1,Catalogos2");
@@ -51,7 +51,7 @@ namespace WCFPrueba
             });
             return q.ToArray();
         }
-
+        
         public int Set(Curso Curso){
             var a = new DataEntity.Data.PRUEBA();
             var q = getId(Curso.Id_Curso);

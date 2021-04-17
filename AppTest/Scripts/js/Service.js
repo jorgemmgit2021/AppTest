@@ -17,8 +17,8 @@ app.service("CursosService", function ($http) {
 
     this.put = function (ID, Curso) {
         var request = $http({
-            method: "put",
-            url: defaultUrl + "/Set",
+            method: "post",
+            url: `${defaultUrl}/Set`,
             data: Curso
         });
         return request;

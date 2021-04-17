@@ -36,7 +36,7 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        <tbody data-ng-repeat="cur in Cursos">
+                        <tbody data-ng-repeat="cur in $Cursos">
                             <tr>
                                 <td></td>
                                 <td class="col-md-2"><span>{{cur.Id_Curso}}</span></td>
@@ -155,7 +155,7 @@
                             <td></td>
                             <td>
                                 <input type="button" id="save" value="Guardar" data-ng-click="save()" class="btn-group-sm btn-success" ng-disabled=!cur.$valid />
-                                <input type="reset" class="btn-group-sm btn-primary" value="Nuevo" />
+                                <input type="button" class="btn-group-sm btn-primary" value="Nuevo" data-ng-click="reset()" />
                             </td>
                         </tr>
                     </table>
