@@ -16,7 +16,7 @@ app.controller("CursosController", function ($scope, CursosService, toaster, $wi
     paises();
     function GetAll() {
         var promiseGet = CursosService.getAll();
-        promiseGet.then(function (pl) { $scope.Cursos = pl.data },
+        promiseGet.then(function (pl) { $scope.$Cursos = pl.data },
             function (errorPl) {
                 $log.error('Some Error in Getting Records.', errorPl);
             });
